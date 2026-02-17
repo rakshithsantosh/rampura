@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Palette */
+  --color-primary-green: #2E7D32;
+  --color-fresh-leaf: #4CAF50;
+  --color-earth-brown: #A86C3D;
+  --color-turban-orange: #E76F2E;
+  --color-soft-golden: #F4B400;
+
+  /* Backgrounds & Text */
+  --color-warm-off-white: #F5F5F0;
+  --color-neutral-dark: #2B2B2B;
+
+  --background: var(--color-warm-off-white);
+  --foreground: var(--color-neutral-dark);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--color-primary-green);
+  --color-secondary: var(--color-fresh-leaf);
+  --color-accent: var(--color-earth-brown);
+  --color-highlight: var(--color-turban-orange);
+  --color-warm: var(--color-soft-golden);
+
+  --font-sans: var(--font-inter), sans-serif;
+  --font-heading: var(--font-outfit), sans-serif;
+  
+  --radius-lg: 1rem;
+  --radius-md: 0.75rem;
+  --radius-sm: 0.5rem;
+  
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
