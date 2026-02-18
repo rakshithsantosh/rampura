@@ -46,25 +46,32 @@ export function Navbar() {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center space-x-8">
-                        {["Our Story", "Shop", "Farming", "Wholesale"].map((item) => (
+                        {[
+                            { label: "About", href: "/about" },
+                            { label: "Kitchen", href: "/kitchen" },
+                            { label: "Contact", href: "/contact" },
+                        ].map((item) => (
                             <Link
-                                key={item}
-                                href={`#${item.toLowerCase().replace(" ", "-")}`}
+                                key={item.label}
+                                href={item.href}
                                 className={cn(
                                     "text-sm font-medium transition-colors hover:text-[var(--color-fresh-leaf)]",
                                     isScrolled ? "text-slate-600" : "text-white/90"
                                 )}
                             >
-                                {item}
+                                {item.label}
                             </Link>
                         ))}
                         <Button
                             variant={isScrolled ? "default" : "secondary"}
                             size="sm"
                             className="gap-2"
+                            asChild
                         >
-                            <ShoppingBag className="h-4 w-4" />
-                            Shop Now
+                            <Link href="/shop">
+                                <ShoppingBag className="h-4 w-4" />
+                                Shop Now
+                            </Link>
                         </Button>
                     </nav>
 
@@ -85,19 +92,25 @@ export function Navbar() {
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
                 <div className="absolute top-full left-0 right-0 bg-white shadow-lg p-4 md:hidden flex flex-col space-y-4 animate-in slide-in-from-top-2">
-                    {["Our Story", "Shop", "Farming", "Wholesale"].map((item) => (
+                    {[
+                        { label: "About", href: "/about" },
+                        { label: "Kitchen", href: "/kitchen" },
+                        { label: "Contact", href: "/contact" },
+                    ].map((item) => (
                         <Link
-                            key={item}
-                            href="#"
+                            key={item.label}
+                            href={item.href}
                             className="text-slate-600 font-medium py-2 border-b border-slate-100"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
-                            {item}
+                            {item.label}
                         </Link>
                     ))}
-                    <Button className="w-full gap-2">
-                        <ShoppingBag className="h-4 w-4" />
-                        Shop Now
+                    <Button className="w-full gap-2" asChild>
+                        <Link href="/shop">
+                            <ShoppingBag className="h-4 w-4" />
+                            Shop Now
+                        </Link>
                     </Button>
                 </div>
             )}
