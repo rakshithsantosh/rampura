@@ -32,13 +32,18 @@ export function Footer() {
                     <div className="space-y-4">
                         <h4 className="font-bold text-lg">Quick Links</h4>
                         <ul className="space-y-2">
-                            {["Shop", "Our Story", "Farming Process", "Wholesale", "Contact Us"].map((item) => (
+                            {["Shop", "Our Story", "Farming Process", "Wholesale"].map((item) => (
                                 <li key={item}>
                                     <Link href="#" className="text-slate-400 hover:text-[var(--color-fresh-leaf)] transition-colors">
                                         {item}
                                     </Link>
                                 </li>
                             ))}
+                            <li>
+                                <Link href="/contact" className="text-slate-400 hover:text-[var(--color-fresh-leaf)] transition-colors">
+                                    Contact Us
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 
@@ -48,11 +53,15 @@ export function Footer() {
                         <ul className="space-y-4">
                             <li className="flex items-start space-x-3 text-slate-400">
                                 <MapPin className="h-5 w-5 mt-0.5 text-[var(--color-fresh-leaf)] shrink-0" />
-                                <span>Rampura Village, District Sikar<br />Rajasthan, India - 332301</span>
+                                <span>
+                                    Rampura Organics India Pvt Ltd,<br />
+                                    Rampura village, Srirangapatna Taluk,<br />
+                                    Mandya District, Karnataka - 571427
+                                </span>
                             </li>
                             <li className="flex items-center space-x-3 text-slate-400">
                                 <Phone className="h-5 w-5 text-[var(--color-fresh-leaf)] shrink-0" />
-                                <span>+91 98765 43210</span>
+                                <span>+91 87624 47427</span>
                             </li>
                             <li className="flex items-center space-x-3 text-slate-400">
                                 <Mail className="h-5 w-5 text-[var(--color-fresh-leaf)] shrink-0" />
