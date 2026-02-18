@@ -75,7 +75,7 @@ export function Navbar() {
                             className="gap-2"
                             asChild
                         >
-                            <Link href="/shop">
+                            <Link href="https://rampura-organics-india-pvt-ltd.myshopify.com/" target="_blank" rel="noopener noreferrer">
                                 <ShoppingBag className="h-4 w-4" />
                                 Shop Now
                             </Link>

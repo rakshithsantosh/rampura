@@ -43,10 +43,15 @@ export function Footer() {
                     <div className="space-y-4">
                         <h4 className="font-bold text-lg">Quick Links</h4>
                         <ul className="space-y-2">
-                            {["Shop", "Our Story", "Farming Process", "Wholesale"].map((item) => (
-                                <li key={item}>
-                                    <Link href="#" className="text-slate-400 hover:text-[var(--color-fresh-leaf)] transition-colors">
-                                        {item}
+                            {[
+                                { label: "Shop", href: "https://rampura-organics-india-pvt-ltd.myshopify.com/" },
+                                { label: "Our Story", href: "/about" },
+                                { label: "Farming Process", href: "/about#farming-process" },
+                                { label: "Wholesale", href: "/contact" }
+                            ].map((item) => (
+                                <li key={item.label}>
+                                    <Link href={item.href} className="text-slate-400 hover:text-[var(--color-fresh-leaf)] transition-colors" target={item.label === "Shop" ? "_blank" : undefined} rel={item.label === "Shop" ? "noopener noreferrer" : undefined}>
+                                        {item.label}
                                     </Link>
                                 </li>
                             ))}

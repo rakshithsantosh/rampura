@@ -31,9 +31,11 @@ export function HeroSection() {
                     </p>
 
                     <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0 pt-4">
-                        <Button size="lg" className="rounded-full text-base font-semibold px-8 h-14">
-                            Explore Products
-                            <ArrowRight className="ml-2 h-5 w-5" />
+                        <Button size="lg" className="rounded-full text-base font-semibold px-8 h-14" asChild>
+                            <Link href="https://rampura-organics-india-pvt-ltd.myshopify.com/" target="_blank" rel="noopener noreferrer">
+                                Explore Products
+                                <ArrowRight className="ml-2 h-5 w-5" />
+                            </Link>
                         </Button>
                         <Button
                             variant="outline"

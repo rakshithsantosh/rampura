@@ -92,9 +92,11 @@ export function FeaturedProducts() {
                 </div>
 
                 <div className="mt-12 text-center">
-                    <Button size="lg" className="rounded-full px-8">
-                        View All Products
-                        <ArrowRight className="ml-2 h-4 w-4" />
+                    <Button size="lg" className="rounded-full px-8" asChild>
+                        <Link href="https://rampura-organics-india-pvt-ltd.myshopify.com/" target="_blank" rel="noopener noreferrer">
+                            View All Products
+                            <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
                     </Button>
                 </div>
             </Container>

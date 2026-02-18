@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
 import { Section } from "@/components/ui/section"
@@ -20,8 +21,10 @@ export function CTASection() {
                 </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
-                    <Button size="lg" className="rounded-full bg-white text-[var(--color-earth-brown)] hover:bg-slate-100 px-8 h-14 font-bold text-lg">
-                        Shop Organic Now
+                    <Button size="lg" className="rounded-full bg-white text-[var(--color-earth-brown)] hover:bg-slate-100 px-8 h-14 font-bold text-lg" asChild>
+                        <Link href="https://rampura-organics-india-pvt-ltd.myshopify.com/" target="_blank" rel="noopener noreferrer">
+                            Shop Organic Now
+                        </Link>
                     </Button>
                     <Button variant="outline" size="lg" className="rounded-full border-white text-white hover:bg-white/10 px-8 h-14 font-semibold">
                         Contact Us
