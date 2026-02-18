@@ -55,6 +55,7 @@ export function Navbar() {
                         {[
                             { label: "About", href: "/about" },
                             { label: "Kitchen", href: "/kitchen" },
+                            { label: "Team", href: "/team" },
                             { label: "Contact", href: "/contact" },
                         ].map((item) => (
                             <Link
@@ -101,6 +102,7 @@ export function Navbar() {
                     {[
                         { label: "About", href: "/about" },
                         { label: "Kitchen", href: "/kitchen" },
+                        { label: "Team", href: "/team" },
                         { label: "Contact", href: "/contact" },
                     ].map((item) => (
                         <Link
