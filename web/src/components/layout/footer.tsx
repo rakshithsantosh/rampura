@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react"
 import { Container } from "@/components/ui/container"
 
@@ -9,9 +10,19 @@ export function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
                     {/* Brand Info */}
                     <div className="space-y-4">
-                        <h3 className="font-heading text-2xl font-bold text-white">
-                            Rampura Organics
-                        </h3>
+                        <div className="flex items-center space-x-3">
+                            <div className="relative h-10 w-10 overflow-hidden rounded-full border border-white/20 bg-white flex items-center justify-center">
+                                <Image
+                                    src="/logo.png"
+                                    alt="Rampura Organics Logo"
+                                    fill
+                                    className="object-cover p-1"
+                                />
+                            </div>
+                            <h3 className="font-heading text-2xl font-bold text-white">
+                                Rampura Organics
+                            </h3>
+                        </div>
                         <p className="text-slate-400 leading-relaxed">
                             Certified trust from Indian soil. Bringing the purest organic produce from our family farms to your table.
                         </p>

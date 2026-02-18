@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X, ShoppingBag } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
@@ -31,8 +32,13 @@ export function Navbar() {
             <Container>
                 <div className="flex items-center justify-between">
                     <Link href="/" className="flex items-center space-x-2">
-                        <div className="relative h-10 w-10 overflow-hidden rounded-full border-2 border-[var(--color-primary-green)] bg-white flex items-center justify-center">
-                            <span className="text-[var(--color-primary-green)] font-bold text-xl">R</span>
+                        <div className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-[var(--color-primary-green)] bg-white flex items-center justify-center">
+                            <Image
+                                src="/logo.png"
+                                alt="Rampura Organics Logo"
+                                fill
+                                className="object-cover p-1"
+                            />
                         </div>
                         <span
                             className={cn(

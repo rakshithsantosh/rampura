@@ -15,6 +15,11 @@ const outfit = Outfit({
 export const metadata: Metadata = {
   title: "Rampura Organics | Certified Trust from Indian Soil",
   description: "Premium organic farming brand rooted in Indian heritage. Chemicals-free, farm-to-table, and community-driven.",
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
