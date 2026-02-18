@@ -70,6 +70,20 @@
       transform: translateY(0);
     }
   }
+
+  --animate-scroll: scroll 1.5s infinite;
+
+  @keyframes scroll {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    100% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+  }
 }
 
 body {

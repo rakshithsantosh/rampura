@@ -48,10 +48,12 @@ export function HeroSection() {
             </Container>
 
             {/* Scroll Indicator */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce text-white/80">
-                <div className="h-10 w-6 rounded-full border-2 border-white/50 p-1">
-                    <div className="h-2 w-full rounded-full bg-white" />
-                </div>
+            {/* Scroll Indicator */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/80">
+                <svg width="26" height="42" viewBox="0 0 26 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="24" height="40" rx="12" stroke="currentColor" strokeWidth="2" />
+                    <circle cx="13" cy="11" r="3" fill="var(--color-fresh-leaf)" className="animate-scroll" />
+                </svg>
             </div>
         </section>
     )

@@ -40,8 +40,23 @@ export function Footer() {
                                 </li>
                             ))}
                             <li>
+                                <Link href="/returns-and-refunds" className="text-slate-400 hover:text-[var(--color-fresh-leaf)] transition-colors">
+                                    Returns and Refunds
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/contact" className="text-slate-400 hover:text-[var(--color-fresh-leaf)] transition-colors">
                                     Contact Us
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/terms-of-service" className="text-slate-400 hover:text-[var(--color-fresh-leaf)] transition-colors">
+                                    Terms of Service
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/privacy-policy" className="text-slate-400 hover:text-[var(--color-fresh-leaf)] transition-colors">
+                                    Privacy Policy
                                 </Link>
                             </li>
                         </ul>
