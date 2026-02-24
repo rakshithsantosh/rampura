@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
 import "./globals.css";
+import { LenisProvider } from "@/components/providers/lenis-provider";
+import { NoiseOverlay } from "@/components/ui/noise-overlay";
 
-const inter = Inter({
-  variable: "--font-inter",
+const plusJakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
 });
 
-const outfit = Outfit({
-  variable: "--font-outfit",
+const fraunces = Fraunces({
+  variable: "--font-heading",
   subsets: ["latin"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -30,9 +33,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${outfit.variable} antialiased bg-[var(--background)] text-[var(--foreground)]`}
+        className={`${plusJakartaSans.variable} ${fraunces.variable} antialiased bg-[var(--background)] text-[var(--foreground)] font-sans`}
       >
-        {children}
+        <NoiseOverlay />
+        <LenisProvider>
+          {children}
+        </LenisProvider>
       </body>
     </html>
   );

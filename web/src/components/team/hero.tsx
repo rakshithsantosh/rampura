@@ -1,27 +1,50 @@
-import { Container } from "@/components/ui/container"
-import { Badge } from "@/components/ui/badge"
+"use client";
+
+import { useEffect, useRef } from "react";
+import { Container } from "@/components/ui/container";
+import { Badge } from "@/components/ui/badge";
+import gsap from "gsap";
 
 export function TeamHero() {
-    return (
-        <section className="relative py-24 md:py-32 bg-[var(--color-warm-off-white)] overflow-hidden">
-            {/* Background Watermark - Abstract Leaf */}
-            <div className="absolute -top-20 -right-20 md:-right-40 opacity-[0.03] pointer-events-none text-[var(--color-primary-green)]">
-                <svg width="600" height="600" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
-                </svg>
-            </div>
+    const sectionRef = useRef<HTMLElement>(null);
 
-            <Container className="relative z-10 text-center max-w-3xl">
-                <Badge variant="earthy" className="mb-6">Our Guardians</Badge>
-                <h1 className="font-heading text-5xl md:text-6xl font-bold text-[var(--color-neutral-dark)] mb-6 leading-tight">
+    useEffect(() => {
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                ".reveal-text",
+                { y: 30, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1.2,
+                    stagger: 0.12,
+                    ease: "power1.out",
+                }
+            );
+        }, sectionRef);
+
+        return () => ctx.revert();
+    }, []);
+
+    return (
+        <section ref={sectionRef} className="relative py-32 md:py-48 bg-[var(--background)] overflow-hidden">
+            <Container className="relative z-10 text-center max-w-4xl mx-auto">
+                <div className="reveal-text mb-8">
+                    <Badge variant="outline" className="border-[var(--color-primary)]/20 text-[var(--color-primary)]">Our Guardians</Badge>
+                </div>
+                <h1 className="reveal-text font-heading text-5xl md:text-7xl font-bold text-[var(--foreground)] mb-8 leading-[1.1]">
                     People Behind <br />
-                    <span className="text-[var(--color-earth-brown)]">The Promise.</span>
+                    <span className="font-heading italic text-[var(--color-primary)]">The Promise.</span>
                 </h1>
-                <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-light">
+                <p className="reveal-text text-lg md:text-2xl text-[var(--foreground)]/80 leading-relaxed font-light max-w-3xl mx-auto">
                     Farming isn't just a job for us; it's a sacred duty passed down through generations.
                     Meet the hands that nurture the soil and the hearts that uphold our legacy of trust.
                 </p>
             </Container>
+
+            {/* Subtle Splashes */}
+            <div className="absolute -z-10 top-0 right-0 w-96 h-96 bg-[var(--color-primary)]/5 rounded-full blur-[100px]" />
+            <div className="absolute -z-10 bottom-0 left-0 w-96 h-96 bg-[var(--color-earth-brown)]/5 rounded-full blur-[100px]" />
         </section>
-    )
+    );
 }

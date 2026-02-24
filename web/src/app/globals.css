@@ -26,8 +26,8 @@
   --color-highlight: var(--color-turban-orange);
   --color-warm: var(--color-soft-golden);
 
-  --font-sans: var(--font-inter), sans-serif;
-  --font-heading: var(--font-outfit), sans-serif;
+  --font-sans: var(--font-sans), sans-serif;
+  --font-heading: var(--font-heading), serif;
 
   --radius-lg: 1rem;
   --radius-md: 0.75rem;
@@ -84,6 +84,28 @@
       transform: translateY(10px);
     }
   }
+}
+
+/* Lenis Utilities */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
 body {
