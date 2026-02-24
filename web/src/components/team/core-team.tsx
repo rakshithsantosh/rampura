@@ -5,40 +5,34 @@ import { Container } from "@/components/ui/container";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-const leadership = [
-    {
-        name: "Amit Singh",
-        role: "Soil Health Expert",
-        description: "Ensures the nutrient balance of our lands using natural composting methods."
-    },
-    {
-        name: "Priya Gowda",
-        role: "Quality Control",
-        description: "Meticulously checks every batch of produce before it's packed."
-    }
-];
+
 
 const teamMembers = [
     {
-        name: "Ravi Kumar",
-        role: "Logistics Manager",
-        description: "Coordinates the smooth flow of goods from our village to the city centers."
+        name: "Santhosh Kumar",
+        role: "Core Team",
+        description: "An intense personality having grown in the cradle of agricultural environs with a clear understanding of being able to identify the missing link of the past with present and rejuvenate the same."
     },
     {
-        name: "Dr. Ananya Reddy",
-        role: "Sustainability Advisor",
-        description: "Guiding our transition to zero-waste farming and renewable energy use."
+        name: "Nanda Kumar",
+        role: "Core Team",
+        description: "Abundant corporate experience...very passionate in all that he takes up whether for support or living....tremendous control on process, compliance and procurement."
     },
     {
-        name: "Suresh & Team",
-        role: "Harvest Technicians",
-        description: "The hands that pick your food at the peak of freshness."
+        name: "Suhas Archak",
+        role: "Core Team",
+        description: "Value enhancer being the back end analytic arm"
     },
     {
-        name: "Meera Krishnan",
-        role: "Customer Experience",
-        description: "Listening to your feedback to help us serve you better every day."
-    }
+        name: "Sateesh CP",
+        role: "Core Team",
+        description: "Heads the specialty in Jaggery division"
+    },
+    {
+        name: "Gururaju",
+        role: "Core Team",
+        description: "Staying in the midst of Rampura. He is insightful individual towards a cohesive bonding of all offerings made by this entity."
+    },
 ];
 
 export function CoreTeamSection() {
@@ -69,10 +63,10 @@ export function CoreTeamSection() {
     }, []);
 
     return (
-        <section ref={sectionRef} id="core-team" className="py-24 md:py-32 bg-[var(--background)]">
+        <section ref={sectionRef} id="core-team" className="py-24 md:py-32 bg-gradient-to-b from-[var(--background)] to-[var(--color-primary-green)]/5 relative overflow-hidden">
             <Container>
                 <div className="reveal-team text-center mb-20 max-w-2xl mx-auto">
-                    <h2 className="font-heading text-4xl font-bold text-[var(--foreground)]">
+                    <h2 className="font-sans text-4xl font-bold text-[var(--foreground)] tracking-tight">
                         The Core Team
                     </h2>
                     <p className="text-[var(--foreground)]/70 mt-4 text-lg font-light">
@@ -80,43 +74,23 @@ export function CoreTeamSection() {
                     </p>
                 </div>
 
-                {/* Leadership - Horizontal Layout */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-20">
-                    {leadership.map((leader, index) => (
-                        <div key={index} className="reveal-team flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left bg-white/40 border border-[var(--foreground)]/5 p-8 rounded-[2rem] hover:-translate-y-1 transition-transform duration-500 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
-                            <div className="h-32 w-32 shrink-0 bg-[var(--foreground)]/5 rounded-full mb-6 sm:mb-0 sm:mr-8 overflow-hidden border-2 border-white shadow-sm flex items-center justify-center text-[var(--foreground)]/30 text-xs">
-                                [Photo]
-                            </div>
-                            <div className="flex-1">
-                                <h3 className="font-heading font-bold text-2xl text-[var(--foreground)] mb-1">
-                                    {leader.name}
-                                </h3>
-                                <p className="text-[var(--color-primary)] text-sm font-semibold tracking-wide mb-4 uppercase">
-                                    {leader.role}
-                                </p>
-                                <p className="text-[var(--foreground)]/70 text-base font-light leading-relaxed">
-                                    {leader.description}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
                 {/* Core Team - 3 Column Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-20">
                     {teamMembers.map((member, index) => (
-                        <div key={index} className="reveal-team bg-white/40 p-8 rounded-[2rem] hover:-translate-y-1 transition-all duration-500 border border-[var(--foreground)]/5 shadow-[0_8px_30px_rgb(0,0,0,0.02)] text-center group">
-                            <div className="h-24 w-24 mx-auto bg-[var(--foreground)]/5 rounded-full mb-6 overflow-hidden border-2 border-white shadow-sm flex items-center justify-center text-[var(--foreground)]/30 text-xs transition-transform duration-500 group-hover:scale-105">
+                        <div key={index} className="reveal-team relative bg-[var(--color-warm-off-white)] rounded-xl border border-[var(--color-primary-green)]/10 shadow-sm motion-safe:hover:-translate-y-1 hover:shadow-md transition-all duration-300 ease-out px-8 pb-8 pt-16 mt-12 text-center group flex flex-col items-center">
+
+                            {/* Elevated Image */}
+                            <div className="absolute -top-14 w-28 h-28 rounded-full overflow-hidden border-4 border-[var(--color-warm-off-white)] shadow-sm bg-[var(--foreground)]/5 flex items-center justify-center text-[var(--foreground)]/30 text-xs transition-all duration-300 ease-out group-hover:saturate-[1.05]">
                                 [Photo]
                             </div>
 
-                            <h3 className="font-heading font-bold text-xl text-[var(--foreground)] mb-1">
+                            <h3 className="font-sans font-bold text-xl text-[var(--foreground)] mt-2 mb-1">
                                 {member.name}
                             </h3>
-                            <p className="text-[var(--color-primary)] text-xs font-semibold tracking-wider mb-4 uppercase">
+                            <p className="text-[var(--color-primary-green)] text-xs font-semibold tracking-wider mb-4 uppercase">
                                 {member.role}
                             </p>
-                            <p className="text-[var(--foreground)]/70 text-sm font-light leading-relaxed">
+                            <p className="text-[var(--foreground)]/70 text-sm font-light leading-relaxed line-clamp-3">
                                 {member.description}
                             </p>
                         </div>
