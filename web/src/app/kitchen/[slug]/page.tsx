@@ -57,17 +57,17 @@ export default async function RecipePage({ params }: RecipePageProps) {
             <Navbar />
 
             {/* Recipe Hero */}
-            <div className="relative h-[65vh] w-full bg-[var(--color-primary)]">
+            <div className="relative h-[65vh] w-full bg-[var(--background)]">
                 {recipe.heroImage && (
                     <Image
                         src={urlFor(recipe.heroImage).url()}
                         alt={recipe.title}
                         fill
-                        className="object-cover opacity-80 mix-blend-multiply"
+                        className="object-cover"
                         priority
                     />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/20 to-black/30" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--background)] via-[var(--background)]/50 to-white/30" />
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/paper.png')] opacity-[0.03] pointer-events-none mix-blend-overlay" />
 
                 <Container className="absolute bottom-0 left-1/2 -translate-x-1/2 pb-16 text-[var(--foreground)] w-full">
