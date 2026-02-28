@@ -162,8 +162,11 @@ function ScrollCanvas({ images }: { images: HTMLImageElement[] }) {
             <div className="sticky top-0 h-screen w-full overflow-hidden">
                 <canvas ref={canvasRef} className="absolute inset-0 z-0 bg-black" />
 
-                {/* Subtle vignette/gradient over canvas to match image borders if not perfect black */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,transparent_60%,#000000_100%)] pointer-events-none z-10" />
+                {/* Dark overlay to ensure text contrast against bright frames */}
+                <div className="absolute inset-0 bg-black/40 pointer-events-none z-10" />
+
+                {/* Subtle vignette over canvas to match image borders and focus center */}
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_60%,#000000_100%)] pointer-events-none z-10" />
 
                 {/* Dynamic Text Layers */}
                 <div className="absolute inset-0 z-20 pointer-events-none flex flex-col justify-center px-6 md:px-20 max-w-7xl mx-auto font-sans">
@@ -171,9 +174,9 @@ function ScrollCanvas({ images }: { images: HTMLImageElement[] }) {
                     {/* 0% Scroll: Centered Title */}
                     <motion.div
                         style={{ opacity: text1Opacity, y: text1Y }}
-                        className="absolute inset-0 flex flex-col items-center justify-center text-center"
+                        className="absolute inset-0 flex flex-col items-center justify-center text-center drop-shadow-[0_4px_24px_rgba(0,0,0,0.8)]"
                     >
-                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-white/90 font-heading">
+                        <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-white font-heading">
                             Routed in Rampura
                         </h1>
                     </motion.div>
@@ -181,12 +184,12 @@ function ScrollCanvas({ images }: { images: HTMLImageElement[] }) {
                     {/* 30% Scroll: Left aligned */}
                     <motion.div
                         style={{ opacity: text2Opacity, y: text2Y }}
-                        className="absolute inset-y-0 left-6 md:left-24 lg:left-32 flex flex-col justify-center max-w-lg"
+                        className="absolute inset-y-0 left-6 md:left-24 lg:left-32 flex flex-col justify-center max-w-lg drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
                     >
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white/90 mb-6 font-heading">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white mb-6 font-heading">
                             Built on Trust
                         </h2>
-                        <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed">
+                        <p className="text-lg md:text-xl text-white/90 font-light leading-relaxed">
                             Before a single crystal of jaggery is formed, we ensure the earth is honored and the soil enriched naturally, season after season.
                         </p>
                     </motion.div>
@@ -194,12 +197,12 @@ function ScrollCanvas({ images }: { images: HTMLImageElement[] }) {
                     {/* 60% Scroll: Right aligned */}
                     <motion.div
                         style={{ opacity: text3Opacity, y: text3Y }}
-                        className="absolute inset-y-0 right-6 md:right-24 lg:right-32 flex flex-col justify-center max-w-lg md:text-right md:items-end items-start"
+                        className="absolute inset-y-0 right-6 md:right-24 lg:right-32 flex flex-col justify-center max-w-lg md:text-right md:items-end items-start drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
                     >
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white/90 mb-6 font-heading">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white mb-6 font-heading">
                             Generational farming near the Cauvery.
                         </h2>
-                        <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed">
+                        <p className="text-lg md:text-xl text-white/90 font-light leading-relaxed">
                             Cultivated on the sacred banks, our sugarcane absorbs the natural vitality of the river, processed slowly with traditional methods for unadulterated sweetness.
                         </p>
                     </motion.div>
@@ -207,16 +210,16 @@ function ScrollCanvas({ images }: { images: HTMLImageElement[] }) {
                     {/* 90% Scroll: Centered CTA */}
                     <motion.div
                         style={{ opacity: text4Opacity, y: text4Y }}
-                        className="absolute inset-0 flex flex-col items-center justify-center text-center pb-20 pointer-events-auto"
+                        className="absolute inset-0 flex flex-col items-center justify-center text-center pb-20 pointer-events-auto drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)]"
                     >
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white/90 mb-12 font-heading">
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight text-white mb-12 font-heading">
                             Taste the Purest Form
                         </h2>
                         <Link
                             href="https://rampura-organics-india-pvt-ltd.myshopify.com/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="px-10 py-5 bg-white text-black text-sm tracking-[0.15em] uppercase font-medium hover:scale-105 transition-transform duration-500 shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.25)] rounded-sm"
+                            className="px-10 py-5 bg-[var(--color-primary)] text-primary-foreground text-sm tracking-[0.15em] uppercase font-medium hover:scale-105 transition-all duration-500 shadow-[0_0_40px_rgba(255,255,255,0.1)] hover:shadow-[0_0_60px_rgba(255,255,255,0.2)] rounded-sm hover:bg-[var(--color-primary)]/90"
                         >
                             Shop Organic Now
                         </Link>
