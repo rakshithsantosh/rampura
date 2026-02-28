@@ -1,101 +1,126 @@
-import Link from "next/link"
+"use client"
+
+import { useEffect, useRef } from "react"
 import Image from "next/image"
 import { Container } from "@/components/ui/container"
-import { Section } from "@/components/ui/section"
-import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
-import { Badge } from "@/components/ui/badge"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 
-const categories = [
-    {
-        title: "Heirloom Grains",
-        description: "Ancient wheat varieties and traditional millets rich in nutrients.",
-        image: "bg-amber-100", // Placeholder color
-        link: "/shop?category=grains",
-        isReady: true
-    },
-    {
-        title: "Cold-Pressed Oils",
-        description: "Extracted using traditional wood-pressed methods to retain aroma.",
-        image: "bg-yellow-100", // Placeholder color
-        link: "/shop?category=oils",
-        isReady: true
-    },
-    {
-        title: "Forest Honey",
-        description: "Raw, unfiltered honey collected sustainably from wild hives.",
-        image: "bg-orange-100", // Placeholder color
-        link: "/shop?category=honey",
-        isReady: false
-    }
-]
+gsap.registerPlugin(ScrollTrigger)
 
-export function ProductOfferings() {
+export function ProductOfferings() { // Renamed conceptually to "The Ritual of A2 Ghee"
+    const sectionRef = useRef<HTMLDivElement>(null)
+    const jarRef = useRef<HTMLDivElement>(null)
+    const shimmerRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (!sectionRef.current || !jarRef.current || !shimmerRef.current) return
+
+        const ctx = gsap.context(() => {
+            // Text fade-in
+            gsap.fromTo(
+                ".reveal-ritual",
+                { y: 40, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1.2,
+                    stagger: 0.15,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top 60%",
+                    },
+                }
+            )
+
+            // Jar rotation on scroll
+            gsap.to(jarRef.current, {
+                rotation: 10,
+                scale: 1.05,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: 1,
+                },
+            })
+
+            // Golden shimmer effect passing over
+            gsap.fromTo(
+                shimmerRef.current,
+                { x: "-150%", opacity: 0 },
+                {
+                    x: "150%",
+                    opacity: 0.6,
+                    ease: "power1.inOut",
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top 40%",
+                        end: "bottom 60%",
+                        scrub: 1,
+                    },
+                }
+            )
+        }, sectionRef)
+
+        return () => ctx.revert()
+    }, [])
+
     return (
-        <Section id="offerings" background="white">
-            <Container>
-                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-                    <div>
-                        <Badge variant="secondary" className="mb-3">Our Harvest</Badge>
-                        <h2 className="font-heading text-3xl md:text-4xl font-bold text-[var(--color-neutral-dark)]">
-                            What We Offer
-                        </h2>
-                    </div>
-                    <Button variant="outline" className="hidden md:flex" asChild>
-                        <Link href="/shop">
-                            View All Products <ArrowRight className="ml-2 h-4 w-4" />
-                        </Link>
-                    </Button>
+        <section
+            ref={sectionRef}
+            id="the-ritual"
+            className="py-32 md:py-48 bg-[#11100e] relative overflow-hidden"
+        >
+            {/* Ambient Spotlight */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-t from-[#c9a75e]/10 to-[#e8e4db]/5 rounded-full blur-[100px] pointer-events-none" />
+
+            <Container className="relative z-10 flex flex-col items-center justify-center">
+                <div className="text-center max-w-3xl mb-20">
+                    <span className="reveal-ritual font-sans text-xs md:text-sm tracking-[0.25em] uppercase text-[#c9a75e] block mb-6">
+                        The Sacred Process
+                    </span>
+                    <h2 className="reveal-ritual font-heading text-4xl md:text-5xl lg:text-7xl font-normal text-[#e8e4db] leading-[1.1]">
+                        The Ritual of <br />
+                        <span className="italic text-[#c9a75e] font-light">A2 Ghee</span>
+                    </h2>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {categories.map((category, index) => (
-                        <div key={index} className="group rounded-2xl overflow-hidden bg-white border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300">
-                            {/* Image Area */}
-                            <div className={`h-64 ${category.image} relative flex items-center justify-center`}>
-                                <span className="text-stone-500 font-medium opacity-50">[Category Image]</span>
+                {/* Product Focus Area */}
+                <div className="relative w-full max-w-md mx-auto aspect-[3/4] flex items-center justify-center perspective-[1000px]">
+                    <div ref={jarRef} className="relative w-64 h-80 z-20 will-change-transform">
+                        {/* Placeholder for actual Glass Jar Image */}
+                        <div className="absolute inset-0 bg-gradient-to-b from-[#e8e4db]/20 to-transparent rounded-t-[3rem] rounded-b-[2rem] border border-[#e8e4db]/30 backdrop-blur-md shadow-[0_0_50px_rgba(201,167,94,0.15)] overflow-hidden flex flex-col items-center">
 
-                                {!category.isReady && (
-                                    <div className="absolute top-4 right-4">
-                                        <Badge variant="secondary" className="bg-white/90 backdrop-blur-sm shadow-sm text-slate-600">
-                                            Launching Soon
-                                        </Badge>
-                                    </div>
-                                )}
+                            {/* Gold Lid Placeholder */}
+                            <div className="w-40 h-10 mt-2 rounded bg-gradient-to-r from-[#b38d45] via-[#f1d582] to-[#b38d45] shadow-lg" />
+
+                            {/* Jar Body Effect */}
+                            <div className="flex-1 w-full bg-gradient-to-b from-transparent to-[#c9a75e]/20 mt-4 rounded-b-[2rem] flex items-center justify-center p-4">
+                                <div className="text-[#e8e4db] font-heading font-light tracking-widest text-sm opacity-60 text-center uppercase">Rampura<br />Bilona Ghee</div>
                             </div>
 
-                            <div className="p-8">
-                                <h3 className="font-heading font-bold text-xl text-[var(--color-neutral-dark)] mb-2 group-hover:text-[var(--color-primary-green)] transition-colors">
-                                    {category.title}
-                                </h3>
-                                <p className="text-slate-600 mb-6 text-sm leading-relaxed">
-                                    {category.description}
-                                </p>
-
-                                {category.isReady ? (
-                                    <Button variant="link" className="p-0 h-auto text-[var(--color-primary-green)]" asChild>
-                                        <Link href={category.link}>
-                                            Explore Category <ArrowRight className="ml-2 h-4 w-4" />
-                                        </Link>
-                                    </Button>
-                                ) : (
-                                    <span className="text-sm text-slate-400 font-medium cursor-not-allowed">
-                                        Coming Soon
-                                    </span>
-                                )}
-                            </div>
+                            {/* Shimmer Mask Overlay */}
+                            <div
+                                ref={shimmerRef}
+                                className="absolute inset-0 w-full h-[200%] bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 transform -translate-y-1/2 mix-blend-overlay pointer-events-none"
+                            />
                         </div>
-                    ))}
+                    </div>
+
+                    {/* Pedestal Shadow */}
+                    <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-48 h-4 bg-black/60 rounded-[100%] blur-md z-10" />
                 </div>
 
-                <div className="mt-8 md:hidden text-center">
-                    <Button variant="outline" className="w-full" asChild>
-                        <Link href="/shop">
-                            View All Products
-                        </Link>
-                    </Button>
+                <div className="reveal-ritual mt-20 text-center max-w-2xl px-4">
+                    <p className="text-lg md:text-2xl text-[#e8e4db]/80 font-light leading-relaxed">
+                        Slowly simmered over firewords, nurtured in glass. We don't just make ghee; we preserve an ancient Ayurvedic tradition.
+                    </p>
                 </div>
             </Container>
-        </Section>
+        </section>
     )
 }
+

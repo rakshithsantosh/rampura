@@ -5,21 +5,30 @@ import { VillageStory } from "@/components/about/village-story"
 import { BrandTimeline } from "@/components/about/timeline"
 import { OurValues } from "@/components/about/values"
 import { ProductOfferings } from "@/components/about/products"
-import { VisionSection } from "@/components/about/vision"
 import { TrustCTA } from "@/components/about/trust-cta"
+import { FilmGrain } from "@/components/ui/film-grain"
+import { AmbientParticles } from "@/components/ui/ambient-particles"
 
 export default function AboutPage() {
     return (
-        <main className="min-h-screen flex flex-col bg-[var(--color-warm-off-white)]">
+        <main className="min-h-screen flex flex-col bg-[#1a1815] text-[#e8e4db] selection:bg-[#c9a75e] selection:text-[#1a1815]">
+            <FilmGrain />
+            <AmbientParticles />
+
             <Navbar />
-            <AboutHero />
-            <VillageStory />
-            <BrandTimeline />
-            <OurValues />
-            <ProductOfferings />
-            <VisionSection />
-            <TrustCTA />
-            <Footer />
+
+            <div className="relative z-10 w-full overflow-hidden">
+                <AboutHero />
+                <VillageStory />
+                <ProductOfferings />
+                <BrandTimeline />
+                <OurValues />
+                <TrustCTA />
+            </div>
+
+            <div className="relative z-20">
+                <Footer />
+            </div>
         </main>
     )
 }

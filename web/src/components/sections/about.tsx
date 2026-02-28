@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
@@ -47,8 +48,10 @@ export function AboutSection() {
                             ))}
                         </div>
 
-                        <Button variant="default" size="lg" className="px-8">
-                            Read Our Full Story
+                        <Button variant="default" size="lg" className="px-8" asChild>
+                            <Link href="/about">
+                                Read Our Full Story
+                            </Link>
                         </Button>
                     </div>
                 </div>

@@ -1,72 +1,115 @@
-import { Container } from "@/components/ui/container"
-import { Section } from "@/components/ui/section"
-import { Sprout, Tractor, Factory, PackageCheck, HeartHandshake } from "lucide-react"
+"use client"
 
-const timelineSteps = [
+import { useEffect, useRef } from "react"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { Container } from "@/components/ui/container"
+
+gsap.registerPlugin(ScrollTrigger)
+
+const milestones = [
     {
-        icon: Sprout,
-        title: "The Roots",
-        description: "Selecting traditional seeds suited for our native soil."
+        title: "Seed Selection",
+        description: "Selecting indigenous heirloom seeds uniquely suited for the Cauvery basin soil.",
+        year: "01"
     },
     {
-        icon: Tractor,
-        title: "Sustainable Farming",
-        description: "Nurturing crops with natural fertilizers and river water."
+        title: "Traditional Bilona",
+        description: "Churning A2 curd in earthen pots using wooden dashers at dawn, before the sun rises.",
+        year: "02"
     },
     {
-        icon: Factory,
-        title: "Honest Processing",
-        description: "Minimal processing to retain natural nutrients and flavor."
+        title: "Slow Heating",
+        description: "Simmering Makkhan over cow dung cake fire to infuse a distinct smoky, caramelised aroma.",
+        year: "03"
     },
     {
-        icon: PackageCheck,
-        title: "Quality Promise",
-        description: "Rigorous testing to ensure 100% chemical-free produce."
+        title: "Lab Testing",
+        description: "Rigorous testing to ensure 100% purity, zero preservatives, and no chemical traces.",
+        year: "04"
     },
     {
-        icon: HeartHandshake,
-        title: "From Us to You",
-        description: "Delivering the purity of Rampura directly to your kitchen."
+        title: "Glass Packing",
+        description: "Hand-poured into premium glass jars to preserve the prana (life force) of the ghee.",
+        year: "05"
     }
 ]
 
 export function BrandTimeline() {
+    const containerRef = useRef<HTMLDivElement>(null)
+    const trackRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        if (!containerRef.current || !trackRef.current) return
+
+        const ctx = gsap.context(() => {
+            const track = trackRef.current
+            if (!track) return
+
+            // Get total scroll width
+            const getScrollAmount = () => {
+                let trackWidth = track.scrollWidth
+                return -(trackWidth - window.innerWidth)
+            }
+
+            const tween = gsap.to(trackRef.current, {
+                x: getScrollAmount,
+                ease: "none"
+            })
+
+            ScrollTrigger.create({
+                trigger: containerRef.current,
+                start: "top top",
+                end: () => `+=${getScrollAmount() * -1}`,
+                pin: true,
+                animation: tween,
+                scrub: 1,
+                invalidateOnRefresh: true,
+            })
+
+        }, containerRef)
+
+        return () => ctx.revert()
+    }, [])
+
     return (
-        <Section id="timeline" background="default" className="py-20">
-            <Container>
-                <div className="text-center mb-16">
-                    <h2 className="font-heading text-3xl font-bold text-[var(--color-neutral-dark)]">
-                        From Our Village to Your Home
-                    </h2>
-                    <div className="h-1 w-24 bg-[var(--color-earth-brown)] mx-auto mt-4 rounded-full" />
-                </div>
-
-                <div className="relative">
-                    {/* Connecting Line (Desktop) */}
-                    <div className="hidden lg:block absolute top-12 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[var(--color-primary-green)]/30 to-transparent" />
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4 relative z-10">
-                        {timelineSteps.map((step, index) => (
-                            <div key={index} className="flex flex-col items-center text-center group">
-                                <div className="w-24 h-24 rounded-full bg-white border-4 border-stone-50 shadow-lg flex items-center justify-center mb-6 z-10 transition-transform duration-300 group-hover:scale-110 group-hover:border-[var(--color-fresh-leaf)]">
-                                    <step.icon className="h-10 w-10 text-[var(--color-primary-green)]" />
-                                </div>
-                                <h3 className="font-heading font-bold text-lg text-[var(--color-neutral-dark)] mb-2">
-                                    {step.title}
-                                </h3>
-                                <p className="text-sm text-slate-600 max-w-[200px]">
-                                    {step.description}
-                                </p>
-
-                                {/* Mobile/Tablet Connector Line - Vertical */}
-                                {index !== timelineSteps.length - 1 && (
-                                    <div className="lg:hidden h-12 w-0.5 bg-[var(--color-primary-green)]/30 my-4" />
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
+        <section ref={containerRef} className="bg-[#1a1815] h-screen overflow-hidden flex flex-col justify-center relative">
+            <Container className="absolute top-20 left-0 w-full z-20 pointer-events-none">
+                <span className="font-sans text-xs md:text-sm tracking-[0.25em] uppercase text-[#c9a75e] block mb-2 px-4">
+                    The Craft
+                </span>
+                <h2 className="font-heading text-4xl md:text-5xl font-normal text-[#e8e4db] px-4">
+                    Artisanal Mastery
+                </h2>
             </Container>
-        </Section>
+
+            <div ref={trackRef} className="flex items-center w-max px-[10vw] md:px-[20vw] h-full pt-20 pb-10 gap-20 md:gap-40 will-change-transform">
+                {milestones.map((milestone, i) => (
+                    <div key={i} className="flex-shrink-0 w-[280px] md:w-[400px] flex gap-6 md:gap-10 opacity-90 hover:opacity-100 transition-opacity">
+
+                        {/* Numeral */}
+                        <div className="font-heading text-6xl md:text-8xl font-light text-transparent" style={{ WebkitTextStroke: '1px rgba(201, 167, 94, 0.4)' }}>
+                            {milestone.year}
+                        </div>
+
+                        {/* Content */}
+                        <div className="pt-4 md:pt-6 space-y-4">
+                            <h3 className="font-heading text-2xl md:text-4xl text-[#e8e4db] font-normal">
+                                {milestone.title}
+                            </h3>
+                            <p className="text-base md:text-lg text-[#e8e4db]/60 font-light leading-relaxed max-w-[280px]">
+                                {milestone.description}
+                            </p>
+                        </div>
+
+                    </div>
+                ))}
+            </div>
+
+            {/* Connecting Line along the bottom of the timeline items conceptually */}
+            <div className="absolute top-[60%] lg:top-[55%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#c9a75e]/30 to-transparent pointer-events-none -z-10" />
+
+        </section>
     )
 }
+
