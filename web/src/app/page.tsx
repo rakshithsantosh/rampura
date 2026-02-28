@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { HeroSection } from "@/components/sections/hero";
+import { ChipScroll } from "@/components/ChipScroll";
 import { AboutSection } from "@/components/sections/about";
 import { FeaturedProducts } from "@/components/sections/products";
 import { WhyChooseUsSection } from "@/components/sections/why-us";
@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col">
       <Navbar />
-      <HeroSection />
+      <ChipScroll />
       <AboutSection />
       <FeaturedProducts />
       <WhyChooseUsSection />
