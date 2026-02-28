@@ -89,23 +89,24 @@ export function ProductOfferings() { // Renamed conceptually to "The Ritual of A
                 </div>
 
                 {/* Product Focus Area */}
-                <div className="relative w-full max-w-md mx-auto aspect-[3/4] flex items-center justify-center perspective-[1000px]">
-                    <div ref={jarRef} className="relative w-64 h-80 z-20 will-change-transform">
-                        {/* Placeholder for actual Glass Jar Image */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#e8e4db]/20 to-transparent rounded-t-[3rem] rounded-b-[2rem] border border-[#e8e4db]/30 backdrop-blur-md shadow-[0_0_50px_rgba(201,167,94,0.15)] overflow-hidden flex flex-col items-center">
+                <div className="relative w-full max-w-4xl mx-auto px-4 flex items-center justify-center">
+                    <div ref={jarRef} className="relative w-full aspect-[16/9] z-20 will-change-transform shadow-2xl rounded-2xl overflow-hidden border border-white/5">
+                        {/* Actual Product Image */}
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                            <Image
+                                src="/ghee-jar.jpeg"
+                                alt="Rampura Bilona Ghee Jar"
+                                fill
+                                className="object-cover"
+                            />
 
-                            {/* Gold Lid Placeholder */}
-                            <div className="w-40 h-10 mt-2 rounded bg-gradient-to-r from-[#b38d45] via-[#f1d582] to-[#b38d45] shadow-lg" />
+                            {/* Inner Vignette to blend edges */}
+                            <div className="absolute inset-0 shadow-[inset_0_0_100px_rgba(0,0,0,0.8)] pointer-events-none z-10" />
 
-                            {/* Jar Body Effect */}
-                            <div className="flex-1 w-full bg-gradient-to-b from-transparent to-[#c9a75e]/20 mt-4 rounded-b-[2rem] flex items-center justify-center p-4">
-                                <div className="text-[#e8e4db] font-heading font-light tracking-widest text-sm opacity-60 text-center uppercase">Rampura<br />Bilona Ghee</div>
-                            </div>
-
-                            {/* Shimmer Mask Overlay */}
+                            {/* Shimmer Mask Overlay remains on top for animation */}
                             <div
                                 ref={shimmerRef}
-                                className="absolute inset-0 w-full h-[200%] bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12 transform -translate-y-1/2 mix-blend-overlay pointer-events-none"
+                                className="absolute inset-0 w-[200%] h-full bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 transform -translate-x-[150%] mix-blend-overlay pointer-events-none z-20"
                             />
                         </div>
                     </div>

@@ -68,7 +68,7 @@ export function VillageStory() {
                         >
                             <Image
                                 ref={imageRef}
-                                src="https://images.unsplash.com/photo-1596704017254-9b121068fba0?q=80&w=2574&auto=format&fit=crop"
+                                src="/village-story.jpeg"
                                 alt="Authentic Village Life"
                                 fill
                                 className="object-cover scale-[1.2] opacity-80"
