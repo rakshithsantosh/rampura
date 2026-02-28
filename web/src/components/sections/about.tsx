@@ -12,12 +12,27 @@ export function AboutSection() {
             <Container>
                 <div className="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 items-center">
                     <div className="relative overflow-hidden rounded-2xl shadow-xl aspect-square bg-slate-100 group">
-                        {/* Placeholder for About Image since generation failed */}
-                        <div className="absolute inset-0 bg-gradient-to-br from-stone-200 to-stone-400 flex items-center justify-center text-stone-500 font-medium">
-                            [Authentic Farming Image]
-                        </div>
-                        <div className="absolute -bottom-6 -right-6 h-48 w-48 rounded-full bg-[var(--color-primary-green)]/10 blur-3xl" />
-                        <div className="absolute -top-6 -left-6 h-48 w-48 rounded-full bg-[var(--color-earth-brown)]/10 blur-3xl" />
+                        {/* 
+                          * TO ADD AN IMAGE:
+                          * 1. Place your image file (e.g., "about-farm.jpg") inside the "public" folder.
+                          * 2. Delete the placeholder <div> below.
+                          * 3. Uncomment the <Image> tag below and adjust the 'src' to match your file name.
+                          */}
+
+                        {/*<div className="absolute inset-0 bg-gradient-to-br from-[var(--color-primary-green)]/10 to-[var(--color-earth-brown)]/20 flex flex-col items-center justify-center text-[var(--color-neutral-dark)]/60 font-medium px-4 text-center">
+                            <span>[Authentic Farming Image]</span>
+                            <span className="text-sm font-normal mt-2 opacity-80">See code for instructions</span>
+                        </div>*/}
+
+                        <Image
+                            src="/about-farm.jpeg"
+                            alt="Rampura Organics farming legacy"
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+
+                        <div className="absolute -bottom-6 -right-6 h-48 w-48 rounded-full bg-[var(--color-primary-green)]/10 blur-3xl z-10 pointer-events-none" />
+                        <div className="absolute -top-6 -left-6 h-48 w-48 rounded-full bg-[var(--color-earth-brown)]/10 blur-3xl z-10 pointer-events-none" />
                     </div>
 
                     <div className="space-y-6">

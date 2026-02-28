@@ -1,3 +1,4 @@
+import Image from "next/image"
 import { Container } from "@/components/ui/container"
 import { Section } from "@/components/ui/section"
 import { Badge } from "@/components/ui/badge"
@@ -42,19 +43,19 @@ export function TransparencySection() {
                     <div className="lg:w-1/2 grid grid-cols-2 gap-4 order-1 lg:order-2">
                         <div className="space-y-4 mt-8">
                             <div className="aspect-[3/4] rounded-2xl bg-stone-200 overflow-hidden relative group">
-                                <div className="absolute inset-0 flex items-center justify-center text-stone-400 font-medium text-center p-4">[Farmer Working]</div>
-                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                                <Image src="/transparency-farmer.jpeg" alt="Farmer Working" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors z-10" />
                             </div>
                             <div className="aspect-square rounded-2xl bg-stone-200 overflow-hidden relative group">
-                                <div className="absolute inset-0 flex items-center justify-center text-stone-400 font-medium text-center p-4">[Soil Close-up]</div>
+                                <Image src="/transparency-soil.jpeg" alt="Soil Close-up" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                             </div>
                         </div>
                         <div className="space-y-4">
                             <div className="aspect-square rounded-2xl bg-stone-200 overflow-hidden relative group">
-                                <div className="absolute inset-0 flex items-center justify-center text-stone-400 font-medium text-center p-4">[Fresh Crops]</div>
+                                <Image src="/transparency-crops.jpeg" alt="Fresh Crops" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                             </div>
                             <div className="aspect-[3/4] rounded-2xl bg-stone-200 overflow-hidden relative group">
-                                <div className="absolute inset-0 flex items-center justify-center text-stone-400 font-medium text-center p-4">[Sunlight on Fields]</div>
+                                <Image src="/transparency-sunlight.jpeg" alt="Sunlight on Fields" fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
                             </div>
                         </div>
                     </div>
